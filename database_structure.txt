@@ -1,0 +1,40 @@
+Creating Transaction Table:
+ CREATE TABLE IF NOT EXISTS Transactions
+    (
+        TransactionID INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+        Date DATE, 
+        TransactionName VARCHAR(100),
+        Expense DOUBLE,
+        Revenue DOUBLE,
+        NetTotal DOUBLE,
+        TransactionType VARCHAR(50),
+        FOREIGN KEY (TransactionType) REFERENCES buckets(TransactionType)
+    );
+
+Creating Buckets Table:
+ CREATE TABLE IF NOT EXISTS buckets
+    (
+        TransactionType VARCHAR(50),
+        Company VARCHAR(50)
+    );
+
+Inserting into Buckets Table:
+ INSERT INTO buckets (TransactionType, Company) 
+ VALUES 
+ ('Entertainment', 'ST JAMES RESTAURAT'),
+ ('Communication', 'ROGERS MOBILE'),
+ ('Groceries', 'SAFEWAY'),
+ ('Donations', 'RED CROSS'),
+ ('Entertainment', 'PUR & SIMPLE RESTAR'),
+ ('Groceries', 'REAL CDN SUPERS'),
+ ('Car Insurance', 'ICBC'),
+ ('Gas Heating', 'FORTISBC');
+
+Creating users Table:
+ CREATE TABLE Users (
+        UserEmail VARCHAR(30),
+        UserPassword VARCHAR(30) NOT NULL,
+        UserRole VARCHAR(10) NOT NULL,
+        Approved BOOLEAN NOT NULL DEFAULT FALSE,
+        PRIMARY KEY (UserEmail)
+    );";
